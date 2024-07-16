@@ -1,0 +1,177 @@
+
+//构造函数
+//class complex{
+//private:
+//	int real, image;
+//public:
+//	complex(int x, int y=0) {};
+//};
+//
+//complex::complex(int x, int y)
+//{
+//	real = x;
+//	image = y;
+//}
+//int main()
+//{
+//	complex a(3);
+//	complex* pc = new complex(5);
+//
+//	return 0;
+//}
+
+//class Sample {
+//	int x;
+//public:
+//	Sample() { cout << "situation one  "; }
+//	Sample(int var) { var = x; cout << "situation two  "; }
+//};
+//int main()
+//{
+//	Sample s1[2];
+//	cout << "\nstep1\n" << endl;
+//	Sample s2[2] = { 3,5 };
+//	cout << "\nstep2\n" << endl;
+//	Sample s3[2] = { 1 };
+//	cout << "\nstep3\n" << endl;
+//	Sample* sp = new Sample[2];
+//	delete[]sp;
+//	cout << "\nstep4\n" << endl;
+//
+//}
+//复制构造函数
+//
+//class Complex
+//{
+//private:
+//	double real, imag;
+//};
+//
+//Complex c1;//调用缺省无参的构造函数
+//Complex c2(c1);//调用缺省的复制构造函数，将c2初始化和c1一样
+
+
+//class Complex
+//{
+//public:
+//	double real, imag;
+//	Complex() {};
+//	Complex(const Complex &c) 
+//	{
+//		real = c.real;
+//		imag = c.imag;
+//		cout << "copy" << endl;
+//	};
+//};
+//Complex c1;
+//Complex c2(c1);
+
+//
+//class Copy
+//{
+//public:
+//	int v;
+//	Copy(int r) { v = r; };
+//	Copy(const Copy& a) 
+//	{
+//		v = a.v;
+//		cout << "copy" << endl;
+//	}
+//};
+//Copy fun()
+//{
+//	Copy c1(5);
+//	return c1;
+//}
+//int main()
+//{
+//	cout << fun().v << endl;
+//	return 0;
+//}
+//
+//class Myclass
+//{
+//public: 
+//	int x;
+//	Myclass() {};
+//	Myclass(Myclass& c) { x= 2 * c.x; };
+//};
+//int main()
+//{
+//	Myclass m1,m2;
+//	m1.x = 5; m2 = m1; Myclass m3(m1);
+//	cout << "m2=" << m2.x<<",";
+//	cout << "m3=" << m3.x;
+//	return 0;
+//
+//}
+
+////类型转换构造函数
+//class Complex
+//{
+//public:
+//	double real,imag;
+//	Complex(int r) { cout << "  type"; real = r; imag = 0; };
+//	Complex(double r, double i) { real = r; imag = i; };
+//};
+//
+//int main()
+//{
+//	Complex c1(2, 5);
+//	Complex c2 = 12;
+//	c1 = 9;//把9自动转换成为一个临时的Complex对象
+//	cout << c1.real << "," << c1.imag;
+//	return 0;
+//}
+
+//析构函数
+//class A
+//{
+//public:
+//	~A()
+//	{
+//		cout << "end";
+//	}
+//};
+//int main()
+//{
+//	A a[2];
+//	cout << "start";
+//	return 0;
+//}
+//
+//Ctest* test;
+//test = new Ctest; //构造函数调用
+//delete test;//析构函数调用
+//
+//
+//Ctest* test;
+//test = new Ctest[3]; //构造函数调用3次
+//delete []test;//析构函数调用3次
+
+class demo {
+public:
+	int id;
+	demo(int i) { id = i; cout << " id=" << id << " construct \n"; };
+	~demo() { cout << " id=" << id << " destruct \n"; };
+};
+
+demo d1(1);
+void func()
+{
+	static demo d2(2);
+	demo d3(3);
+	cout << " func end \n";
+}
+int main()
+{
+	demo d4(4);
+	d4 = 6;
+	cout << " main \n";
+	{
+		demo d5(5);
+	}
+	func();
+	cout << " main end \n";
+	return 0;
+}
